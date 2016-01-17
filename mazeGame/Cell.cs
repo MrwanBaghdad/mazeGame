@@ -157,25 +157,25 @@ namespace mazeGame
         }
         public ArrayList shuffle(ArrayList list)
         {
-            // Insert cards at random order into the shuffled list
+            
             ArrayList shuffled = new ArrayList();
             var rand = new Random();
 
-            // As long as there are any cards left to insert randomly
+           
             while (list.Count != 0)
             {
-                // Get the index of the random card to insert
+                
                 var i = rand.Next(10);
                 i=i%list.Count;
 
-                // Insert it
+                
                 shuffled.Add(list[i]);
 
-                // Remove from non-shuffled list
+               
                 list.RemoveAt(i);
             }
 
-            // Set the list of cards to the shuffled list
+            
             return shuffled;
         }
        
