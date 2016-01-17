@@ -43,3 +43,5 @@ C:\Users\Ghannam\mazeGame\mazeGame\mazeGame\obj\x86\Debug\mazeGame.csprojResolve
 C:\Users\Ghannam\Google Drive\Game Project\mazeGame\bin\Windows\Debug\mazeGame.exe.config
 C:\Users\Ghannam\Google Drive\Game Project\mazeGame\obj\x86\Debug\mazeGame.exe
 C:\Users\Ghannam\Google Drive\Game Project\mazeGame\obj\x86\Debug\mazeGame.csprojResolveAssemblyReference.cache
+C:\Users\Ghannam\Documents\mazeGame\mazeGame\bin\Windows\Debug\mazeGame.exe.config
+C:\Users\Ghannam\Documents\mazeGame\mazeGame\obj\x86\Debug\mazeGame.exe
