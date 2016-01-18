@@ -39,6 +39,7 @@ namespace mazeGame
             Random generator = new Random();
             double x = generator.NextDouble() ;
             x -= (int)x;
+            Debug.WriteLine(x);
             getDifferentNeighbourDirection = x >= 0.6; 
             ArrayList realNeighbours = this.getUnvisitedNeighboursList();
             if (getDifferentNeighbourDirection)

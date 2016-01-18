@@ -9,7 +9,5 @@ namespace mazeGame
     class MazeController
     {
         
-
-        
     }
 }

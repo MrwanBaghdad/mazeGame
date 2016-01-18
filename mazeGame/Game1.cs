@@ -17,8 +17,11 @@ namespace mazeGame
         CharacterController character;
         public Game1()
         {
+            m = new Maze();
             graphics = new GraphicsDeviceManager(this);
-            
+            graphics.PreferredBackBufferWidth = m.mazeSize * m.cellSize;
+            graphics.PreferredBackBufferHeight = m.mazeSize * m.cellSize;   
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
 
@@ -54,7 +57,7 @@ namespace mazeGame
                 playControl = true;
             }
             character.moveCharacter(Keyboard.GetState(),gameTime);
-            Debug.WriteLine(gameTime.TotalGameTime.TotalSeconds);
+            
             base.Update(gameTime);
         }
 

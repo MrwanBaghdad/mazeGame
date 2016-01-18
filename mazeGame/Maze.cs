@@ -9,10 +9,11 @@ namespace mazeGame
     class Maze
     {
         public Cell[,] cells;
-        int mazeSize;
+        public int mazeSize;
+        public int cellSize=22;
         public Maze()
         {
-            mazeSize = 20;
+            mazeSize = 30;
             cells = new Cell[mazeSize, mazeSize];
             initializeAllCells();
             initializeNeighbouringCells();
@@ -82,18 +83,19 @@ namespace mazeGame
                 for (int j = 0; j < mazeSize; j++)
                 {
                     sb.Draw(game.Content.Load<Texture2D>("walls/"+this.cells[i, j].getImageName())
-                            ,new Rectangle(20 * i, 20 * j,20,20)
-                            ,Color.White);
+                            , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
+                            ,Color.Yellow);
                     if (this.cells[i, j].carries.Equals("character"))
                     { 
                     sb.Draw(game.Content.Load<Texture2D>("character")
-                            , new Rectangle(20 * i+5, 20 * j+5, 15, 15)
-                            , Color.White);
+                            , new Rectangle(cellSize * i + 5, cellSize * j + 5, 15, 15)
+                            , Color.Yellow);
                         }
                     
                 }
             }
         }
+       
         
     }
 }

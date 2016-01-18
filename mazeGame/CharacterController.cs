@@ -29,7 +29,7 @@ namespace mazeGame
         }
         public void moveCharacter( KeyboardState keyState,GameTime gameTime)
         {
-            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > 0.2;
+            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > 0.1;
             if (keyState.IsKeyDown(Keys.Up) && canMove)
             {
                 this.moveUp();
@@ -59,7 +59,7 @@ namespace mazeGame
                 currentCell.carries = "";
                 currentCell.neighbours.up.carries = "character";
                 currentCell = currentCell.neighbours.up;
-                //Thread.Sleep(100);
+                
             }
         }
         private void moveDown()
@@ -69,7 +69,7 @@ namespace mazeGame
                 currentCell.carries = "";
                 currentCell.neighbours.down.carries = "character";
                 currentCell = currentCell.neighbours.down;
-                //Thread.Sleep(100);
+                
 
             }
         }
@@ -80,7 +80,7 @@ namespace mazeGame
                 currentCell.carries = "";
                 currentCell.neighbours.right.carries = "character";
                 currentCell = currentCell.neighbours.right;
-                //Thread.Sleep(100);
+                
 
             }
         }
@@ -91,7 +91,7 @@ namespace mazeGame
                 currentCell.carries = "";
                 currentCell.neighbours.left.carries = "character";
                 currentCell = currentCell.neighbours.left;
-                //Thread.Sleep(100);
+                
 
             }
         }
