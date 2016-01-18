@@ -18,7 +18,7 @@ namespace mazeGame
             Maze maze = m;
 
             Cell current = init;
-            //current.visited = true;
+
             Stack<Cell> unvisitedCellStack = new Stack<Cell>();
             
             while (maze.hasUnvisitedCells())

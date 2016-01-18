@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace mazeGame
 {
@@ -13,16 +14,18 @@ namespace mazeGame
         SpriteBatch spriteBatch;
         Maze m;
         bool playControl = false;
-
+        CharacterController character;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            
             Content.RootDirectory = "Content";
         }
 
     
         protected override void Initialize()
         {
+            
             base.Initialize();
         }
 
@@ -42,13 +45,16 @@ namespace mazeGame
         {
             //exit if escape is pressed
             if (Keyboard.GetState().IsKeyDown(Keys.Escape)) { Exit(); }
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter)) { playControl = false; } 
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter)) { playControl = false; }
             if (!playControl)
             {
                 m = new Maze();
-                MazeBuilder.createMaze(m.cells[0,0], m);
+                MazeBuilder.createMaze(m.cells[0, 0], m);
+                character = new CharacterController(m.cells[0, 0]);
                 playControl = true;
             }
+            character.moveCharacter(Keyboard.GetState(),gameTime);
+            Debug.WriteLine(gameTime.TotalGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 

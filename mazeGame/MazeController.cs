@@ -8,6 +8,8 @@ namespace mazeGame
 {
     class MazeController
     {
-        CharacterController character;
+        
+
+        
     }
 }

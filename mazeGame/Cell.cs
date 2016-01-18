@@ -26,7 +26,7 @@ namespace mazeGame
     {
         public Vector2 position;
         public CellWalls walls = new CellWalls();
-        public string carries;
+        public string carries="";
         public CellNeighbours neighbours = new CellNeighbours();
         //this string holds the last relation with the most recent selected neighbour in order to evade it in the next selection
         private static string lastSelectedNeighbourRelation = "";
@@ -36,7 +36,10 @@ namespace mazeGame
 
         public Cell getRandomNeighbourAndCarvePath()
         {
-            getDifferentNeighbourDirection = !getDifferentNeighbourDirection;
+            Random generator = new Random();
+            double x = generator.NextDouble() ;
+            x -= (int)x;
+            getDifferentNeighbourDirection = x >= 0.6; 
             ArrayList realNeighbours = this.getUnvisitedNeighboursList();
             if (getDifferentNeighbourDirection)
             {
@@ -44,12 +47,14 @@ namespace mazeGame
                 {
                     if (!lastSelectedNeighbourRelation.Equals(this.relationWith((Cell)realNeighbours[i])))
                     {
-
                         lastSelectedNeighbourRelation = this.relationWith((Cell)realNeighbours[i]);
                         carvePath(lastSelectedNeighbourRelation);
                         return ((Cell)realNeighbours[i]);
                     }
                 }
+                lastSelectedNeighbourRelation = this.relationWith((Cell)realNeighbours[0]);
+                carvePath(lastSelectedNeighbourRelation);
+                return ((Cell)realNeighbours[0]);
             }
             else
             {
@@ -57,6 +62,8 @@ namespace mazeGame
                 carvePath(lastSelectedNeighbourRelation);
                 return ((Cell)realNeighbours[0]);
             }
+
+            
 
         }
         private void carvePath(String direction)

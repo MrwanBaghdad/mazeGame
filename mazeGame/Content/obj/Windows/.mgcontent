@@ -4,20 +4,21 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/0001.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/0010.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/0011.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/0100.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/0101.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/0110.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/0111.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1000.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1001.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1010.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1011.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1100.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1101.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1110.jpg</File>
-    <File>C:/Users/Ghannam/mazeGame/mazeGame/mazeGame/Content/walls/1111.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0001.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0010.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0011.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0100.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0101.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0110.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0111.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1000.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1001.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1010.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1011.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1100.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1101.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1110.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1111.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/character.png</File>
   </SourceFiles>
 </SourceFileCollection>

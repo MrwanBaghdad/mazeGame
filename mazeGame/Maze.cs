@@ -84,6 +84,12 @@ namespace mazeGame
                     sb.Draw(game.Content.Load<Texture2D>("walls/"+this.cells[i, j].getImageName())
                             ,new Rectangle(20 * i, 20 * j,20,20)
                             ,Color.White);
+                    if (this.cells[i, j].carries.Equals("character"))
+                    { 
+                    sb.Draw(game.Content.Load<Texture2D>("character")
+                            , new Rectangle(20 * i+5, 20 * j+5, 15, 15)
+                            , Color.White);
+                        }
                     
                 }
             }
