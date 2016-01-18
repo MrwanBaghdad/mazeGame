@@ -11,10 +11,13 @@ namespace mazeGame
         public Cell[,] cells;
         public int mazeSize;
         public int cellSize=22;
+        public Cell endCell;
+        
         public Maze()
         {
             mazeSize = 30;
             cells = new Cell[mazeSize, mazeSize];
+            endCell = cells[mazeSize - 1, mazeSize - 1];
             initializeAllCells();
             initializeNeighbouringCells();
         }
@@ -85,12 +88,24 @@ namespace mazeGame
                     sb.Draw(game.Content.Load<Texture2D>("walls/"+this.cells[i, j].getImageName())
                             , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
                             ,Color.Yellow);
-                    if (this.cells[i, j].carries.Equals("character"))
+                    if (this.cells[i, j].carries.Contains("character"))
                     { 
                     sb.Draw(game.Content.Load<Texture2D>("character")
-                            , new Rectangle(cellSize * i + 5, cellSize * j + 5, 15, 15)
-                            , Color.Yellow);
+                            , new Rectangle(cellSize * i +3, cellSize * j +3 , cellSize-5, cellSize-5)
+                            , Color.Brown);
                         }
+                    if (this.cells[i, j].carries.Contains("end"))
+                    {
+                        sb.Draw(game.Content.Load<Texture2D>("character")
+                            , new Rectangle(cellSize * i +3, cellSize * j +3, cellSize -5 , cellSize -5 )
+                            , Color.Black);
+                    }
+                    if (this.cells[i, j].carries.Contains("monster"))
+                    {
+                        sb.Draw(game.Content.Load<Texture2D>("character")
+                            , new Rectangle(cellSize * i + 3, cellSize * j + 3, cellSize - 5, cellSize - 5)
+                            , Color.Green);
+                    }
                     
                 }
             }

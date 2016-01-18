@@ -23,10 +23,7 @@ namespace mazeGame
             canMove = true;
             
         }
-        public void loadCharacterImage(Game game, string name)
-        {
-            charImage = game.Content.Load<Texture2D>(name);
-        }
+        
         public void moveCharacter( KeyboardState keyState,GameTime gameTime)
         {
             canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > 0.1;

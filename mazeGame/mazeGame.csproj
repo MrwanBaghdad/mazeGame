@@ -51,7 +51,8 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Maze.cs" />
     <Compile Include="MazeBuilder.cs" />
-    <Compile Include="MazeController.cs" />
+    <Compile Include="GameController.cs" />
+    <Compile Include="MonsterController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

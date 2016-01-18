@@ -186,6 +186,29 @@ namespace mazeGame
             
             return shuffled;
         }
+        public ArrayList getNeighboursICanMoveTo()
+        {
+            ArrayList result = new ArrayList();
+
+            if (walls.up == false)
+            {
+                result.Add(neighbours.up);
+            }
+            if (walls.down == false)
+            {
+                result.Add(neighbours.down);
+            }
+            if (walls.left == false)
+            {
+                result.Add(neighbours.left);
+            }
+            if (walls.right == false)
+            {
+                result.Add(neighbours.right);
+            }
+            result = shuffle(result);
+            return result;
+        }
        
     }
 

@@ -24,7 +24,7 @@ namespace mazeGame
             while (maze.hasUnvisitedCells())
             {
                 
-                //put the current cell in the stack
+                
                 unvisitedCellStack.Push(current);
 
                 if (current.hasUnvisitedNeighbours())
@@ -42,8 +42,9 @@ namespace mazeGame
                     
                 }
                 
-
-                
+                //mark end cell 
+                maze.endCell = maze.cells[maze.mazeSize - 1, maze.mazeSize - 1];
+                maze.endCell.carries += "end";
 
             }
 

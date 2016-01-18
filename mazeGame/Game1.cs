@@ -12,9 +12,13 @@ namespace mazeGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
         Maze m;
         bool playControl = false;
+
         CharacterController character;
+        MonsterController monster;
+
         public Game1()
         {
             m = new Maze();
@@ -54,8 +58,10 @@ namespace mazeGame
                 m = new Maze();
                 MazeBuilder.createMaze(m.cells[0, 0], m);
                 character = new CharacterController(m.cells[0, 0]);
+                monster = new MonsterController(m.cells[m.mazeSize - 1, 0]);
                 playControl = true;
             }
+            monster.moveMonster();
             character.moveCharacter(Keyboard.GetState(),gameTime);
             
             base.Update(gameTime);
