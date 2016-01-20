@@ -224,7 +224,7 @@ namespace mazeGame
             }
             return bestCell;
         }
-        private float distanceFrom(Cell destination)
+        public float distanceFrom(Cell destination)
         {
             return Math.Abs(destination.position.X - this.position.X) + Math.Abs(destination.position.Y - this.position.Y);
         }

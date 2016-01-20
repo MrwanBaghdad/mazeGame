@@ -49,6 +49,7 @@
     <Compile Include="Cell.cs" />
     <Compile Include="CharacterController.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="GiftController.cs" />
     <Compile Include="Maze.cs" />
     <Compile Include="MazeBuilder.cs" />
     <Compile Include="GameController.cs" />

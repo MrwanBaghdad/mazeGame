@@ -15,7 +15,7 @@ namespace mazeGame
 
         Maze m;
         bool playControl = false;
-
+        GiftController gifts;
         CharacterController character;
         MonsterController monster;
 
@@ -56,15 +56,16 @@ namespace mazeGame
             if (!playControl)
             {
                 m = new Maze();
-                MazeBuilder.createMaze(m.cells[0,0], m);
+                
+                gifts = new GiftController(m);
                 character = new CharacterController(m.cells[0, 0]);
                 monster = new MonsterController(m.cells[m.mazeSize - 1, 0]);
                 playControl = true;
             }
-
-            monster.moveMonster(character,gameTime);
-            character.moveCharacter(Keyboard.GetState(),gameTime);
-            
+            MazeBuilder.createMazeOneByOne(m);
+            monster.moveMonster(character, gameTime);
+            character.moveCharacter(Keyboard.GetState(), gameTime);
+            gifts.UpdateGifts(m);
             base.Update(gameTime);
         }
 

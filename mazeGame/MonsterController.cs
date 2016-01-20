@@ -33,7 +33,7 @@ namespace mazeGame
 
         public void moveMonster(CharacterController character,GameTime gameTime)
         {
-            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove;
+            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
 
             if (currentCell != character.currentCell && canMove)
             {
@@ -48,9 +48,10 @@ namespace mazeGame
                 else
                 {
 
-                    monsterPath.Pop();
-                    if (monsterPath.Count > 0)
+                    
+                    if (monsterPath.Count > 1)
                     {
+                        monsterPath.Pop();
                         moveMonsterToCell(monsterPath.Peek());
                     }
                 }

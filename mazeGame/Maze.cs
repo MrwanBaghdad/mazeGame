@@ -15,7 +15,7 @@ namespace mazeGame
         
         public Maze()
         {
-            mazeSize = 30;
+            mazeSize = 19;
             cells = new Cell[mazeSize, mazeSize];
             endCell = cells[mazeSize - 1, mazeSize - 1];
             initializeAllCells();
@@ -107,7 +107,12 @@ namespace mazeGame
                             , new Rectangle(cellSize * i + 3, cellSize * j + 3, cellSize - 5, cellSize - 5)
                             , Color.Green);
                     }
-                    
+                    if (this.cells[i, j].carries.Contains("Gift"))
+                    {
+                        sb.Draw(game.Content.Load<Texture2D>("character")
+                            , new Rectangle(cellSize * i + 3, cellSize * j + 3, cellSize - 5, cellSize - 5)
+                            , Color.Pink);
+                    }
                 }
             }
         }

@@ -27,7 +27,7 @@ namespace mazeGame
         
         public void moveCharacter( KeyboardState keyState,GameTime gameTime)
         {
-            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove;
+            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
 
             if (keyState.IsKeyDown(Keys.Up) && canMove)
             {
@@ -55,7 +55,7 @@ namespace mazeGame
         private void moveUp(){
             if (currentCell.walls.up == false)
             {
-                currentCell.carries = "";
+                currentCell.carries = currentCell.carries.Replace("character","");
                 currentCell.neighbours.up.carries = "character";
                 currentCell = currentCell.neighbours.up;
                 
@@ -65,10 +65,9 @@ namespace mazeGame
         {
             if (currentCell.walls.down == false)
             {
-                currentCell.carries = "";
+                currentCell.carries = currentCell.carries.Replace("character", "");
                 currentCell.neighbours.down.carries = "character";
                 currentCell = currentCell.neighbours.down;
-                
 
             }
         }
@@ -76,7 +75,7 @@ namespace mazeGame
         {
             if (currentCell.walls.right == false)
             {
-                currentCell.carries = "";
+                currentCell.carries = currentCell.carries.Replace("character", "");
                 currentCell.neighbours.right.carries = "character";
                 currentCell = currentCell.neighbours.right;
                 
@@ -87,7 +86,7 @@ namespace mazeGame
         {
             if (currentCell.walls.left == false)
             {
-                currentCell.carries = "";
+                currentCell.carries = currentCell.carries.Replace("character", "");
                 currentCell.neighbours.left.carries = "character";
                 currentCell = currentCell.neighbours.left;
                 

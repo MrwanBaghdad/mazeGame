@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +10,24 @@ namespace mazeGame
 {
     class GameController
     {
-        private static int score = 0;
-        public static void updateScore(Maze maze)
-        {
-            
-            score++;
-
-        }
+        public static int score = 0;
+        public static double lastFinishedGameTime;
+        public static bool gameHasStarted=false;
         
+        
+        public static void updateScore(int addedScore)
+        {
+            score += addedScore;
+        }
+        public static void finishGame(GameTime gameTime)
+        {
+            gameHasStarted = false;
+        }
+        public static void startGame()
+        {
+            gameHasStarted = true;
+        }
+       
 
     }
 }
