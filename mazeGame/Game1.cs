@@ -61,6 +61,7 @@ namespace mazeGame
                 monster = new MonsterController(m.cells[m.mazeSize - 1, 0]);
                 playControl = true;
             }
+
             monster.moveMonster(character);
             character.moveCharacter(Keyboard.GetState(),gameTime);
             

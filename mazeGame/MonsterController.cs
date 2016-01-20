@@ -20,19 +20,27 @@ namespace mazeGame
             currentCell = startCell;
             currentCell.monsterVisited = true;
             monsterPath=new Stack<Cell>();
+            monsterPath.Push(startCell);
         }
 
         public void moveMonster(CharacterController character)
         {
-            
-            if (currentCell.hasMonsterUnvisitedNeighbours())
+            if (currentCell != character.currentCell)
             {
-                Cell destination = currentCell.chooseNearestMonsterUnvisitedNeighbourTo(character.currentCell);
-                moveMonsterToCell(destination);
-                currentCell.monsterVisited = true;
-                monsterPath.Push(currentCell);
+                if (currentCell.hasMonsterUnvisitedNeighbours())
+                {
+                    Cell destination = currentCell.chooseNearestMonsterUnvisitedNeighbourTo(character.currentCell);
+                    moveMonsterToCell(destination);
+                    currentCell.monsterVisited = true;
+                    monsterPath.Push(currentCell);
+                }
+                else
+                {
+
+                    monsterPath.Pop();
+                    moveMonsterToCell(monsterPath.Peek());
+                }
             }
-            
         }
           
             

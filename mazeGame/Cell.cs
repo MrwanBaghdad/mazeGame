@@ -232,7 +232,7 @@ namespace mazeGame
             ArrayList result = new ArrayList();
             foreach (Cell c in neighbours)
             {
-                if (!c.visited)
+                if (!c.monsterVisited)
                 {
                     result.Add(c);
                 }
