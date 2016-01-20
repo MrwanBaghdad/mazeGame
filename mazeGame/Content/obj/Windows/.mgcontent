@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0001.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0010.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0011.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0100.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0101.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0110.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/0111.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1000.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1001.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1010.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1011.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1100.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1101.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1110.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/walls/1111.jpg</File>
+    <File>C:/Users/Ghannam/Documents/mazeGame/mazeGame/Content/character.png</File>
+  </SourceFiles>
+</SourceFileCollection>
