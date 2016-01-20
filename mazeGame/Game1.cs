@@ -56,13 +56,13 @@ namespace mazeGame
             if (!playControl)
             {
                 m = new Maze();
-                MazeBuilder.createMazeDFS(m.cells[10,10], m);
+                MazeBuilder.createMaze(m.cells[0,0], m);
                 character = new CharacterController(m.cells[0, 0]);
                 monster = new MonsterController(m.cells[m.mazeSize - 1, 0]);
                 playControl = true;
             }
 
-            monster.moveMonster(character);
+            monster.moveMonster(character,gameTime);
             character.moveCharacter(Keyboard.GetState(),gameTime);
             
             base.Update(gameTime);
@@ -73,6 +73,7 @@ namespace mazeGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             m.drawMaze(spriteBatch, this);
+
             spriteBatch.End();
             base.Draw(gameTime);
         }

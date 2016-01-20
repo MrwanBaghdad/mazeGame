@@ -34,13 +34,15 @@ namespace mazeGame
         private static bool getDifferentNeighbourDirection = false;
         public bool visited = false;
         public bool monsterVisited = false;
+
         public Cell getRandomNeighbourAndCarvePath()
         {
             Random generator = new Random();
-            double x = generator.NextDouble() ;
+            double x = generator.NextDouble();
             x -= (int)x;
             Debug.WriteLine(x);
             getDifferentNeighbourDirection = x >= 0.6; 
+
             ArrayList realNeighbours = this.getUnvisitedNeighboursList();
             if (getDifferentNeighbourDirection)
             {

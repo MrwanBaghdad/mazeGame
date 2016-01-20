@@ -16,17 +16,19 @@ namespace mazeGame
         public Cell currentCell;
         bool canMove;
         double lastMoveWhen = 0;
+        double timePerMove;
         public CharacterController(Cell startCell)
         {
             currentCell = startCell;
             startCell.carries = "character";
             canMove = true;
-            
+            timePerMove = 0.1;
         }
         
         public void moveCharacter( KeyboardState keyState,GameTime gameTime)
         {
-            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > 0.1;
+            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove;
+
             if (keyState.IsKeyDown(Keys.Up) && canMove)
             {
                 this.moveUp();
