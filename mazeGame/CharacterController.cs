@@ -24,34 +24,37 @@ namespace mazeGame
             canMove = true;
             timePerMove = 0.1;
         }
-        
-        public void moveCharacter( KeyboardState keyState,GameTime gameTime)
-        {
-            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
 
+        public string moveCharacter(KeyboardState keyState, GameTime gameTime)
+        {
+            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > 0.1;
             if (keyState.IsKeyDown(Keys.Up) && canMove)
             {
                 this.moveUp();
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+                return "flagup";
             }
             else if (keyState.IsKeyDown(Keys.Down) && canMove)
             {
                 this.moveDown();
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
-
+                return "flagdown";
             }
             else if (keyState.IsKeyDown(Keys.Right) && canMove)
             {
                 this.moveRight();
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+                return "flagright";
             }
             else if (keyState.IsKeyDown(Keys.Left) && canMove)
             {
                 this.moveLeft();
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+                return "flagleft";
             }
-            
+            return "null";
         }
+
         private void moveUp(){
             if (currentCell.walls.up == false)
             {

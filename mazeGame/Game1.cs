@@ -18,7 +18,7 @@ namespace mazeGame
         GiftController gifts;
         CharacterController character;
         MonsterController monster;
-
+        BulletController bullet;
         public Game1()
         {
             m = new Maze();
@@ -60,13 +60,17 @@ namespace mazeGame
                 gifts = new GiftController(m);
                 character = new CharacterController(m.cells[0, 0]);
                 monster = new MonsterController(m.cells[m.mazeSize - 1, 0]);
+                bullet = new BulletController();
                 playControl = true;
             }
             MazeBuilder.createMazeOneByOne(m);
             monster.moveMonster(character, gameTime);
             character.moveCharacter(Keyboard.GetState(), gameTime);
             gifts.UpdateGifts(m);
+            String direction = character.moveCharacter(Keyboard.GetState(), gameTime);
+            bullet.FireBullet(character.currentCell, Keyboard.GetState(), gameTime, direction);
             base.Update(gameTime);
+
         }
 
         protected override void Draw(GameTime gameTime)

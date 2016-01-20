@@ -113,6 +113,12 @@ namespace mazeGame
                             , new Rectangle(cellSize * i + 3, cellSize * j + 3, cellSize - 5, cellSize - 5)
                             , Color.Pink);
                     }
+                    if (this.cells[i, j].carries.Contains("bullet"))
+                    {
+                        sb.Draw(game.Content.Load<Texture2D>("character")
+                            , new Rectangle(cellSize * i + 3, cellSize * j + 3, cellSize - 5, cellSize - 5)
+                            , Color.Red);
+                    }
                 }
             }
         }
