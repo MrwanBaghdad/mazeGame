@@ -13,21 +13,35 @@ namespace mazeGame
         //to be added afterwards 
         Texture2D image;
         Cell currentCell;
-        string lastDirection;
+        Stack<Cell> monsterPath;
         public MonsterController(Cell startCell)
         {
             startCell.carries += "monster";
             currentCell = startCell;
+            currentCell.monsterVisited = true;
+            monsterPath=new Stack<Cell>();
         }
 
-        public void moveMonster()
+        public void moveMonster(CharacterController character)
         {
-            Random generator = new Random();
-            ArrayList cellsICanMoveTo = currentCell.getNeighboursICanMoveTo();
-            Cell moveTo = (Cell)cellsICanMoveTo[generator.Next(0, cellsICanMoveTo.Count)];
-            //todo make the monster search for a path to the player then move according to it
+            
+            if (currentCell.hasMonsterUnvisitedNeighbours())
+            {
+                Cell destination = currentCell.chooseNearestMonsterUnvisitedNeighbourTo(character.currentCell);
+                moveMonsterToCell(destination);
+                currentCell.monsterVisited = true;
+                monsterPath.Push(currentCell);
+            }
+            
+        }
+          
+            
+        
+        
+        private void moveMonsterToCell(Cell destination)
+        {
             currentCell.carries = currentCell.carries.Replace("monster", "");
-            currentCell = moveTo;
+            currentCell = destination;
             currentCell.carries += "monster";
         }
     }

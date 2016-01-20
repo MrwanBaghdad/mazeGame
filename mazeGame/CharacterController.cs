@@ -13,7 +13,7 @@ namespace mazeGame
     class CharacterController
     {
         Texture2D charImage;
-        Cell currentCell;
+        public Cell currentCell;
         bool canMove;
         double lastMoveWhen = 0;
         public CharacterController(Cell startCell)

@@ -33,7 +33,7 @@ namespace mazeGame
         //boolean that holds whether we're going to take an different neighbour direction or random
         private static bool getDifferentNeighbourDirection = false;
         public bool visited = false;
-
+        public bool monsterVisited = false;
         public Cell getRandomNeighbourAndCarvePath()
         {
             Random generator = new Random();
@@ -67,7 +67,7 @@ namespace mazeGame
             
 
         }
-        private void carvePath(String direction)
+        public void carvePath(String direction)
         {
 
             switch (direction)
@@ -127,7 +127,7 @@ namespace mazeGame
             
             return result;
         }
-        private string relationWith(Cell x)
+        public string relationWith(Cell x)
         {
             if (x == neighbours.up)
             {
@@ -209,7 +209,65 @@ namespace mazeGame
             result = shuffle(result);
             return result;
         }
-       
+        public Cell chooseNearestMonsterUnvisitedNeighbourTo(Cell destination)
+        {
+            ArrayList reachableNeighbours = this.getMonsterUnvisitedNeighbours();
+            Cell bestCell = (Cell)reachableNeighbours[0];
+            foreach (Cell c in reachableNeighbours)
+            {
+                if (distanceFrom(bestCell) > distanceFrom(c) )
+                {
+                    bestCell = c;
+                }
+            }
+            return bestCell;
+        }
+        private float distanceFrom(Cell destination)
+        {
+            return Math.Abs(destination.position.X - this.position.X) + Math.Abs(destination.position.Y - this.position.Y);
+        }
+        public ArrayList getMonsterUnvisitedNeighbours()
+        {
+            ArrayList neighbours = this.getNeighboursICanMoveTo();
+            ArrayList result = new ArrayList();
+            foreach (Cell c in neighbours)
+            {
+                if (!c.visited)
+                {
+                    result.Add(c);
+                }
+            }
+            return result;
+        }
+        public bool hasMonsterUnvisitedNeighbours(){
+            return getMonsterUnvisitedNeighbours().Count > 0;
+        }
+        public ArrayList getAllNeighbours()
+        {
+            ArrayList result = new ArrayList();
+
+            if (neighbours.up != null)
+            {
+                result.Add(neighbours.up);
+            }
+            if (neighbours.down != null)
+            {
+                result.Add(neighbours.down);
+            }
+            if (neighbours.left != null)
+            {
+                result.Add(neighbours.left);
+            }
+            if (neighbours.right != null)
+            {
+                result.Add(neighbours.right);
+            }
+            result = shuffle(result);
+            
+            return result;
+
+
+        }
     }
 
 

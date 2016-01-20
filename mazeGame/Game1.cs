@@ -56,12 +56,12 @@ namespace mazeGame
             if (!playControl)
             {
                 m = new Maze();
-                MazeBuilder.createMaze(m.cells[0, 0], m);
+                MazeBuilder.createMazeDFS(m.cells[10,10], m);
                 character = new CharacterController(m.cells[0, 0]);
                 monster = new MonsterController(m.cells[m.mazeSize - 1, 0]);
                 playControl = true;
             }
-            monster.moveMonster();
+            monster.moveMonster(character);
             character.moveCharacter(Keyboard.GetState(),gameTime);
             
             base.Update(gameTime);

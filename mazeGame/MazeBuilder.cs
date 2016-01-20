@@ -54,7 +54,32 @@ namespace mazeGame
         }
 
 
-        
+        public static Maze createMazeDFS(Cell init, Maze m)
+        {
+
+            foreach (Cell c in m.cells)
+            {
+                if (c.visited == false)
+                {
+                    visitAllReachableCells(c);
+                }
+            }
+
+            return null;
+        }
+        public static void visitAllReachableCells(Cell startCell)
+        {
+            ArrayList neighbours = startCell.getAllNeighbours();
+            foreach (Cell c in neighbours)
+            {
+                if (c.visited == false)
+                {
+                    c.visited = true;
+                    startCell.carvePath(startCell.relationWith(c));
+                    visitAllReachableCells(c);
+                }
+            }
+        }
 
 
     }
