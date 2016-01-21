@@ -7,113 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections;
 
 
 namespace mazeGame
 {
     class BulletController
     {
-        
-        public  bool hasBeenFired;
-        public Cell current;
-        int steps;
-        int maxsteps = 5;
-        
+        static ArrayList  bullets=new ArrayList();
 
-        public BulletController() //constructor
-        {
-            hasBeenFired = true;
-            steps = 0;
-            
-        }
 
-        public void FireBullet(Cell cellbullet, KeyboardState keyState, GameTime gameTime, string direction)
+        public static void Update(CharacterController character)
         {
-            current = cellbullet;
-            
-            if (keyState.IsKeyDown(Keys.Z))
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                hasBeenFired = true;
-
-                while (steps < maxsteps && direction == "flagright" && current.walls.right == false)
-                    {
-                      
-                        this.fireRight();
-                        steps++;
-                    }
-
-                while (steps < maxsteps && direction == "flagleft" && current.walls.left == false)
-                {
-                    this.fireLeft();
-                    steps++;
-                }
-
-                while (steps < maxsteps && direction == "flagup" && current.walls.up == false)
-                {
-                    this.fireUp();
-                    steps++;
-                }
-
-                while (steps < maxsteps && direction == "flagdown" && current.walls.down == false)
-                {
-                    this.fireDown();
-                    steps++;
-                }
-
-                steps = 0;
-                }
+                bullets.Add(new Bullet(character.currentCell,"up"));
             }
-        
-
-
-        private void fireUp()
-        {
-            current.carries = current.carries.Replace("bullet", "");
-            current.neighbours.up.carries += "bullet";
-            current = current.neighbours.up;
-            //needs delay first
-            //if (steps == 4 || current.walls.up == true)
-            //{
-            //    current.neighbours.right.carries = current.carries.Replace("bullet", "");
-            //}
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                bullets.Add(new Bullet(character.currentCell, "down"));
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                bullets.Add(new Bullet(character.currentCell, "right"));
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                bullets.Add(new Bullet(character.currentCell, "left"));
+            }
+            foreach (Bullet b in bullets)
+            {
+                b.move();
+            }
         }
 
-        private void fireDown()
-        {
-           current.carries = current.carries.Replace("bullet", "");
-           current.neighbours.down.carries += "bullet";
-           current = current.neighbours.down;
-            //needs delay first 
-           //if (steps == 4 || current.walls.down == true)
-           //{
-           //    current.neighbours.right.carries = current.carries.Replace("bullet", "");
-           //}
-        }
-
-        public void fireRight()
-        {
-            current.carries = current.carries.Replace("bullet", "");
-            current.neighbours.right.carries += "bullet";
-            current = current.neighbours.right;
-           //needs delay first
-            //if (steps == 4 || current.walls.right == true)
-            //{
-            //    current.neighbours.right.carries = current.carries.Replace("bullet", "");
-            //}
-         }
-        
-
-        private void fireLeft()
-        {
-            current.carries = current.carries.Replace("bullet", "");
-            current.neighbours.left.carries += "bullet";
-            current = current.neighbours.left;
-            //needs delay first
-            //if (steps == 4 || current.walls.left == true)
-            //{
-            //    current.neighbours.right.carries = current.carries.Replace("bullet", "");
-            //}
-         }
-        }
+      
     }
+}
 

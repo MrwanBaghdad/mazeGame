@@ -46,6 +46,7 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bullet.cs" />
     <Compile Include="BulletController.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="CharacterController.cs" />

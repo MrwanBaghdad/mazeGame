@@ -31,11 +31,14 @@ namespace mazeGame
             timePerMove = 0.2;
         }
 
-        public void moveMonster(CharacterController character,GameTime gameTime)
+        public void moveMonster(CharacterController character,GameTime gameTime,Maze m)
         {
             canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
-
-            if (currentCell != character.currentCell && canMove)
+            if (currentCell.carries.Contains("bullet"))
+            {
+                moveMonsterToCell(m.cells[m.mazeSize - 1, 0]);
+            }
+            else if (currentCell != character.currentCell && canMove)
             {
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
                 if (currentCell.hasMonsterUnvisitedNeighbours())
@@ -63,6 +66,7 @@ namespace mazeGame
         
         private void moveMonsterToCell(Cell destination)
         {
+            
             currentCell.carries = currentCell.carries.Replace("monster", "");
             currentCell = destination;
             currentCell.carries += "monster";
