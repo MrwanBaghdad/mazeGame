@@ -15,26 +15,36 @@ namespace mazeGame
     class BulletController
     {
         static ArrayList  bullets=new ArrayList();
+        static double  lastMoveWhen;
 
-
-        public static void Update(CharacterController character)
+        public static void Update(CharacterController character,GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            bool canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > 0.2;
+
+            if(canMove)
             {
-                bullets.Add(new Bullet(character.currentCell,"up"));
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    bullets.Add(new Bullet(character.currentCell,"up"));
+                    lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                {
+                    bullets.Add(new Bullet(character.currentCell, "down"));
+                    lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.D))
+                {
+                    bullets.Add(new Bullet(character.currentCell, "right"));
+                    lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.A))
+                {
+                    bullets.Add(new Bullet(character.currentCell, "left"));
+                    lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+                }
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                bullets.Add(new Bullet(character.currentCell, "down"));
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                bullets.Add(new Bullet(character.currentCell, "right"));
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                bullets.Add(new Bullet(character.currentCell, "left"));
-            }
+
             foreach (Bullet b in bullets)
             {
                 b.move();

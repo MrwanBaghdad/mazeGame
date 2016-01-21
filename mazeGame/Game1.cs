@@ -67,7 +67,7 @@ namespace mazeGame
             monster.moveMonster(character, gameTime,m);
             character.moveCharacter(Keyboard.GetState(), gameTime);
             gifts.UpdateGifts(m);
-            BulletController.Update(character);
+            BulletController.Update(character,gameTime);
             base.Update(gameTime);
 
         }

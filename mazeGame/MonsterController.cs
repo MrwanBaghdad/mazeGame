@@ -37,6 +37,7 @@ namespace mazeGame
             if (currentCell.carries.Contains("bullet"))
             {
                 moveMonsterToCell(m.cells[m.mazeSize - 1, 0]);
+                GameController.updateScore(50);
             }
             else if (currentCell != character.currentCell && canMove)
             {

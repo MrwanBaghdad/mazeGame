@@ -18,10 +18,12 @@ namespace mazeGame
         public static void updateScore(int addedScore)
         {
             score += addedScore;
+            
         }
         public static void finishGame(GameTime gameTime)
         {
             gameHasStarted = false;
+            lastFinishedGameTime = gameTime.TotalGameTime.TotalMinutes;
         }
         public static void startGame()
         {
