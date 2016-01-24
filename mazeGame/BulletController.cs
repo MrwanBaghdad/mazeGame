@@ -14,10 +14,19 @@ namespace mazeGame
 {
     class BulletController
     {
+        //standard sigleton Implementation
+        //static reference to instance of the class
+        static BulletController instance;
+
+        //static fields of the class
         static ArrayList  bullets=new ArrayList();
         static double  lastMoveWhen;
 
-        public static void Update(CharacterController character,GameTime gameTime)
+        private BulletController()
+        {
+
+        }
+        public  void Update(CharacterController character,GameTime gameTime)
         {
             bool canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > 0.2;
 
@@ -51,6 +60,14 @@ namespace mazeGame
             }
         }
 
+        public static BulletController getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new BulletController();
+            }
+            return instance;
+        }
       
     }
 }
