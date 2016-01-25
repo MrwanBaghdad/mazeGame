@@ -46,17 +46,23 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bullet.cs" />
-    <Compile Include="BulletController.cs" />
-    <Compile Include="Cell.cs" />
-    <Compile Include="CharacterController.cs" />
-    <Compile Include="Game1.cs" />
-    <Compile Include="GiftController.cs" />
-    <Compile Include="Maze.cs" />
-    <Compile Include="MazeBuilder.cs" />
-    <Compile Include="GameController.cs" />
-    <Compile Include="MonsterController.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Control\BombController.cs" />
+    <Compile Include="Control\DroppingController.cs" />
+    <Compile Include="Model\Bullet.cs" />
+    <Compile Include="Control\BulletController.cs" />
+    <Compile Include="Model\Cell.cs" />
+    <Compile Include="Control\CharacterController.cs" />
+    <Compile Include="Model\Bomb.cs" />
+    <Compile Include="Model\Dropping.cs" />
+    <Compile Include="Control\DroppingsFactory.cs" />
+    <Compile Include="View\Game1.cs" />
+    <Compile Include="Control\GiftController.cs" />
+    <Compile Include="Model\Maze.cs" />
+    <Compile Include="Model\MazeBuilder.cs" />
+    <Compile Include="Control\GameController.cs" />
+    <Compile Include="Control\MonsterController.cs" />
+    <Compile Include="Model\Gift.cs" />
+    <Compile Include="View\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
