@@ -16,7 +16,7 @@ namespace mazeGame
         
         Maze m;
         bool playControl = false;
-        GiftController gifts;
+  
         CharacterController character;
         MonsterController monster;
        

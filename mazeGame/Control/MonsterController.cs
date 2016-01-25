@@ -17,7 +17,7 @@ namespace mazeGame
         bool canMove;
         double lastMoveWhen;
         double timePerMove;
-        Cell lastCharPlace;
+    
         //fields for animation
         public static int currentImageName = 1;
         private static bool canChangeImage;
