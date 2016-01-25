@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,47 @@ namespace mazeGame
     {
         Cell currentCell;
         string direction;
-        public Bullet(Cell startCell,string firedFrom)
+        //object pool DP Implementation is here
+        private static Bullet[] instances=new Bullet[20];
+        private static int currentIndex=0;
+        private Bullet(Cell startCell,string firedFrom)
         {
             this.currentCell = startCell;
             this.direction = firedFrom;
         }
+        public static Bullet getInstance(Cell givenCell,String firedFrom)
+        {
+            currentIndex = (currentIndex + 1) % 20;
+            Debug.WriteLine(currentIndex);
+            if (instances[currentIndex] == null)
+            {
+                instances[currentIndex] = new Bullet(givenCell,firedFrom);
+                return instances[currentIndex];
+            }
+            else
+            {
+                instances[currentIndex].currentCell = givenCell;
+                instances[currentIndex].direction = firedFrom;
+                return instances[currentIndex];
+            }
+
+        }
+        public static void moveAll()
+        {
+            foreach (Bullet b in instances)
+            {
+                if (b != null)
+                {
+                    b.move();
+                }
+            }
+        }
+
+
+
+
+
+
         public void move()
         {
             switch (direction)

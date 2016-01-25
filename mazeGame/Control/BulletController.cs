@@ -43,35 +43,32 @@ namespace mazeGame
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
                 {
-                    bullets.Add(new Bullet(character.currentCell,"up"));
+                    bullets.Add(Bullet.getInstance(character.currentCell,"up"));
                     lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
                 }
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
-                    bullets.Add(new Bullet(character.currentCell, "down"));
+                    bullets.Add(Bullet.getInstance(character.currentCell, "down"));
                     lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
                 }
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
-                    bullets.Add(new Bullet(character.currentCell, "right"));
+                    bullets.Add(Bullet.getInstance(character.currentCell, "right"));
                     lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
                 }
                 if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
-                    bullets.Add(new Bullet(character.currentCell, "left"));
+                    bullets.Add(Bullet.getInstance(character.currentCell, "left"));
                     lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
                 }
             }
 
-            foreach (Bullet b in bullets)
-            {
-                b.move();
-                
-            }
+            Bullet.moveAll();
         }
 
         public static BulletController getInstance()
         {
+
             if (instance == null)
             {
                 instance = new BulletController();
