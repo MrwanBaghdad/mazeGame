@@ -27,6 +27,7 @@ namespace mazeGame
                 if (item.carries.Contains("bomb") && item.carries.Contains("character"))
                 {
                     item.carries = item.carries.Replace("bomb", "");
+                    CharacterController.isDead = true;
                     
                 }
                 if (item.carries.Contains("bomb") && item.carries.Contains("bullet"))

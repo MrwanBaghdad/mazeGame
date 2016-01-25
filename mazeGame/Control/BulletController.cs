@@ -66,6 +66,7 @@ namespace mazeGame
             foreach (Bullet b in bullets)
             {
                 b.move();
+                
             }
         }
 

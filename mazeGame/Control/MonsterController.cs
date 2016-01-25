@@ -12,7 +12,7 @@ namespace mazeGame
     class MonsterController 
     {
         
-        Cell currentCell;
+        public Cell currentCell;
         Stack<Cell> monsterPath;
         bool canMove;
         double lastMoveWhen;
@@ -54,6 +54,9 @@ namespace mazeGame
             if (currentCell.carries.Contains("bullet"))
             {
                 moveMonsterToCell(m.cells[m.mazeSize - 1, 0]);
+                restartMonsterVisits(m);
+                monsterPath = new Stack<Cell>();
+                monsterPath.Push(currentCell);
                 GameController.updateScore(50);
             }
             else if (currentCell != character.currentCell && canMove)
@@ -77,6 +80,11 @@ namespace mazeGame
                         moveMonsterToCell(monsterPath.Peek());
                     }
                 }
+            }
+            else if (currentCell == character.currentCell) {
+                CharacterController.isDead = true;
+                CharacterController.currentImageName = 1;
+                moveMonsterToCell(m.cells[m.mazeSize -1, 0]);
             }
         }
         private bool monsterVisitedAll(Maze m)

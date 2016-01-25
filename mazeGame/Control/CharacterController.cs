@@ -17,6 +17,7 @@ namespace mazeGame
         bool canMove;
         double lastMoveWhen = 0;
         double timePerMove;
+        public static bool isDead;
         //fields that control animation
         public static int currentImageName = 1;
         private static bool canChangeImage;
@@ -28,20 +29,37 @@ namespace mazeGame
             startCell.carries = "character";
             canMove = true;
             timePerMove = 0.1;
-           
+            isDead = false;
         }
 
-        public void moveCharacter(KeyboardState keyState, GameTime gameTime)
+        public void moveCharacter(KeyboardState keyState, GameTime gameTime,MonsterController monster)
         {
             //animation control
             canChangeImage = gameTime.TotalGameTime.TotalSeconds - lastChangeWhen > 0.05;
-            if (canChangeImage && anyKeyIsPressed(keyState))
+            if (currentCell != monster.currentCell && !isDead)
             {
-                currentImageName = (currentImageName + 1) % 7;
-                if (currentImageName == 0) { currentImageName++; }
-                lastChangeWhen = gameTime.TotalGameTime.TotalSeconds;
+                
+                if (canChangeImage && anyKeyIsPressed(keyState))
+                {
+                    currentImageName = (currentImageName + 1) % 7;
+                    if (currentImageName == 0) { currentImageName++; }
+                    lastChangeWhen = gameTime.TotalGameTime.TotalSeconds;
+                }
             }
+                //dying animation
+            else
+            {
+                
+                if (canChangeImage)
+                {
+                    if (currentImageName < 9)
+                    {
+                        currentImageName++;
 
+                        lastChangeWhen = gameTime.TotalGameTime.TotalSeconds;
+                    }
+                }
+            }
             canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
             if (keyState.IsKeyDown(Keys.Up) && canMove)
             {
