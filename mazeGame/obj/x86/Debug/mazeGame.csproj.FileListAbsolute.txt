@@ -99,3 +99,4 @@ C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\SharpDX.
 C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Ghannam\Documents\mazeGame\mazeGame\obj\x86\Debug\mazeGame.exe
 C:\Users\Ghannam\Documents\mazeGame\mazeGame\obj\x86\Debug\mazeGame.pdb
+C:\Users\Ghannam\Documents\mazeGame\mazeGame\obj\x86\Debug\mazeGame.csprojResolveAssemblyReference.cache

@@ -241,7 +241,7 @@ namespace mazeGame
             }
             return result;
         }
-        public bool hasMonsterUnvisitedNeighbours(){
+        public bool hasReachableMonsterUnvisitedNeighbours(){
             return getMonsterUnvisitedNeighbours().Count > 0;
         }
         public ArrayList getAllNeighbours()
@@ -270,6 +270,12 @@ namespace mazeGame
 
 
         }
+        public Cell getReachableMonsterUnvisitedNeighbour()
+        {
+            ArrayList neighbours = this.getMonsterUnvisitedNeighbours();
+            return (Cell)neighbours[0];
+        }
+        
     }
 
 

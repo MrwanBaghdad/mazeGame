@@ -13,11 +13,11 @@ namespace mazeGame
     {
         
         public Cell currentCell;
-        Stack<Cell> monsterPath;
+        ArrayList monsterPath;
         bool canMove;
         double lastMoveWhen;
         double timePerMove;
-    
+        Cell lastCharCell;
         //fields for animation
         public static int currentImageName = 1;
         private static bool canChangeImage;
@@ -27,12 +27,10 @@ namespace mazeGame
         {
             startCell.carries += "monster";
             currentCell = startCell;
-            currentCell.monsterVisited = true;
-            monsterPath=new Stack<Cell>();
-            monsterPath.Push(startCell);
             canMove = true;
             lastMoveWhen = 0;
             timePerMove = 0.2;
+            
         }
 
         public void moveMonster(CharacterController character,GameTime gameTime,Maze m)
@@ -46,46 +44,52 @@ namespace mazeGame
                 if (currentImageName == 0) { currentImageName++; }
                 lastChangeWhen = gameTime.TotalGameTime.TotalSeconds;
             }
-            if (monsterVisitedAll(m))
-            {
-                restartMonsterVisits(m);
-            }
+
+         
+
             canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
+            //handle when Monster is Killed
             if (currentCell.carries.Contains("bullet"))
             {
                 moveMonsterToCell(m.cells[m.mazeSize - 1, 0]);
                 restartMonsterVisits(m);
-                monsterPath = new Stack<Cell>();
-                monsterPath.Push(currentCell);
+                
                 GameController.updateScore(50);
             }
-            else if (currentCell != character.currentCell && canMove)
+            //if no monsterPath has been calculated
+            if (monsterPath == null)
+            {
+                monsterPath = choosePathTo(character,m);
+            }
+
+            //handle Monster Movements
+                //first if the character hasn't moved stay on your path
+            if (lastCharCell == character.currentCell && canMove )
             {
                 
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
-                if (currentCell.hasMonsterUnvisitedNeighbours())
+                if (currentCell.hasReachableMonsterUnvisitedNeighbours())
                 {
-                    Cell destination = currentCell.chooseNearestMonsterUnvisitedNeighbourTo(character.currentCell);
-                    moveMonsterToCell(destination);
-                    currentCell.monsterVisited = true;
-                    monsterPath.Push(currentCell);
-                }
-                else
-                {
-
-                    
-                    if (monsterPath.Count > 1)
+                    if (monsterPath.Count > 0)
                     {
-                        monsterPath.Pop();
-                        moveMonsterToCell(monsterPath.Peek());
+                        moveMonsterToCell((Cell)monsterPath[0]);
+                        monsterPath.RemoveAt(0);
                     }
                 }
+               
             }
-            else if (currentCell == character.currentCell) {
+                //secondly if the character moved restart path calculation
+            else if(lastCharCell != character.currentCell)
+            {
+                monsterPath = choosePathTo(character, m);
+            }
+            //handle when character is killed 
+             if (currentCell == character.currentCell) {
                 CharacterController.isDead = true;
                 CharacterController.currentImageName = 1;
                 moveMonsterToCell(m.cells[m.mazeSize -1, 0]);
             }
+            lastCharCell = character.currentCell;
         }
         private bool monsterVisitedAll(Maze m)
         {
@@ -113,6 +117,45 @@ namespace mazeGame
             currentCell.carries = currentCell.carries.Replace("monster", "");
             currentCell = destination;
             currentCell.carries += "monster";
+        }
+        private ArrayList choosePathTo(CharacterController character,Maze m)
+        {
+           Cell current = this.currentCell;
+           current.monsterVisited = true;
+           Stack<Cell> chosenPath = new Stack<Cell>();
+           
+           while (current != character.currentCell)
+           {
+               chosenPath.Push(current);
+               if(current.hasReachableMonsterUnvisitedNeighbours())
+               {
+                   current = current.getReachableMonsterUnvisitedNeighbour();
+                   current.monsterVisited = true;
+               }
+               else
+               {
+                   chosenPath.Pop();
+                   current = chosenPath.Pop();
+               }
+           }
+
+           chosenPath.Push(character.currentCell);
+           restartMonsterVisits(m);
+           Cell[] savePath = chosenPath.ToArray<Cell>();
+           Array.Reverse(savePath);
+           ArrayList result = cellArraytoArrayList(savePath);
+           result.RemoveAt(0);
+           return result;
+           
+        }
+        private ArrayList cellArraytoArrayList(Cell[] array)
+        {
+            ArrayList result = new ArrayList();
+            foreach (Cell c in array)
+            {
+                result.Add(c);
+            }
+            return result;
         }
     }
 }
