@@ -41,7 +41,6 @@ namespace mazeGame
             sb.Draw(game.Content.Load<Texture2D>("numbers/score field"), new Rectangle(m.mazeSize * m.cellSize + 10, 200, 160, 60), Color.White);
             drawScore(sb, game,m);
             sb.Draw(game.Content.Load<Texture2D>("numbers/" + GameController.level), new Rectangle(m.mazeSize * m.cellSize + 55, 50, 80, 80), Color.White);
-            
             sb.Draw(game.Content.Load<Texture2D>("numbers/bullet field"), new Rectangle(m.mazeSize * m.cellSize + 10, 270, 160, 60), Color.White);
             drawBullets(sb, game, m);
             sb.Draw(game.Content.Load<Texture2D>("numbers/time field"), new Rectangle(m.mazeSize * m.cellSize + 10, 340, 160, 60), Color.White);
@@ -69,12 +68,14 @@ namespace mazeGame
         {
 
             int lastPositionX=0;
+            ///draw minutes 
             string minutes = ((int)(gameTime.TotalGameTime.TotalSeconds - GameController.lastFinishedGameTime) / 60) + "";
             for (int i = 1; i <= minutes.Length; i++)
             {
                 sb.Draw(game.Content.Load<Texture2D>("numbers/" + minutes[i - 1]), new Rectangle(m.mazeSize * m.cellSize + 50 + (i * 15), 360, 20, 20), Color.White);
                 lastPositionX = m.mazeSize * m.cellSize + 50 + (i * 15);
             }
+            //draw the " : " between minutes and seconds 
             sb.Draw(game.Content.Load<Texture2D>("numbers/" +"00"), new Rectangle(lastPositionX+15, 360, 20, 20), Color.White);
             //draw Seconds
             string seconds = ((int)(gameTime.TotalGameTime.TotalSeconds - GameController.lastFinishedGameTime) % 60) + "";

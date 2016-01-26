@@ -56,21 +56,24 @@ namespace mazeGame
 
         public void move()
         {
-            switch (direction)
+            if (!CharacterController.isDead)
             {
-                case "up":
-                    moveUp();
-                    break;
-                case "down":
-                    moveDown();
-                    break;
-                case "right":
-                    moveRight();
-                    break;
-                case "left":
-                    moveLeft();
-                    break;
+                switch (direction)
+                {
+                    case "up":
+                        moveUp();
+                        break;
+                    case "down":
+                        moveDown();
+                        break;
+                    case "right":
+                        moveRight();
+                        break;
+                    case "left":
+                        moveLeft();
+                        break;
 
+                }
             }
         }
         private void moveUp()

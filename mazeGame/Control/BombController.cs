@@ -28,7 +28,8 @@ namespace mazeGame
                 {
                     item.carries = item.carries.Replace("bomb", "");
                     CharacterController.isDead = true;
-                    
+                    GameController.finishGame(gameTime, m);
+                    GameController.level = 1;
                 }
                 if (item.carries.Contains("bomb") && item.carries.Contains("bullet"))
                 {

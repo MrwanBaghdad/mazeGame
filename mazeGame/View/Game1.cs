@@ -54,14 +54,13 @@ namespace mazeGame
             //exit if escape is pressed
             if (Keyboard.GetState().IsKeyDown(Keys.Escape)) { Exit(); }
             if (Keyboard.GetState().IsKeyDown(Keys.Enter)) { playControl = false; }
-            if (!playControl)
+            if (!playControl && !GameController.gameHasStarted)
             {
                 m = new Maze();
                 MazeBuilder.createMaze(m.cells[0, 0], m);
                 DroppingController.putDroppings(m);
                 character = new CharacterController(m.cells[0, 0]);
                 monster = new MonsterController(m.cells[m.mazeSize - 1, 0]);
-                
                 playControl = true;
             }
             //MazeBuilder.createMazeOneByOne(m);
@@ -80,7 +79,6 @@ namespace mazeGame
             spriteBatch.Begin();
             m.drawMaze(spriteBatch, this);
             GameController.drawStatus(spriteBatch,this,m,gameTime);
-            //spriteBatch.DrawString(Content.Load<SpriteFont>("font"), "Score: " + GameController.score, new Vector2(20,m.mazeSize * m.cellSize+ 20), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }

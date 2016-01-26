@@ -10,9 +10,9 @@ namespace mazeGame
     {
         public Cell[,] cells;
         public int mazeSize;
-        public int cellSize=40;
+        public int cellSize = 40;
         public Cell endCell;
-        
+
         public Maze()
         {
             mazeSize = 15;
@@ -21,14 +21,15 @@ namespace mazeGame
             initializeAllCells();
             initializeNeighbouringCells();
         }
-        private void initializeAllCells(){
+        private void initializeAllCells()
+        {
 
             for (int i = 0; i < mazeSize; i++)
             {
                 for (int j = 0; j < mazeSize; j++)
                 {
-                    cells[i,j] = new Cell();
-                    cells[i,j].position=new Vector2(i,j);
+                    cells[i, j] = new Cell();
+                    cells[i, j].position = new Vector2(i, j);
                 }
             }
         }
@@ -71,7 +72,8 @@ namespace mazeGame
         }
         public bool hasUnvisitedCells()
         {
-            foreach(Cell c in this.cells){
+            foreach (Cell c in this.cells)
+            {
                 if (!c.visited)
                 {
                     return true;
@@ -79,15 +81,15 @@ namespace mazeGame
             }
             return false;
         }
-        public void drawMaze(SpriteBatch sb,Microsoft.Xna.Framework.Game game)
+        public void drawMaze(SpriteBatch sb, Microsoft.Xna.Framework.Game game)
         {
             for (int i = 0; i < mazeSize; i++)
             {
                 for (int j = 0; j < mazeSize; j++)
                 {
-                    sb.Draw(game.Content.Load<Texture2D>("new cell/"+this.cells[i, j].getImageName())
+                    sb.Draw(game.Content.Load<Texture2D>("new cell/" + this.cells[i, j].getImageName())
                             , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
-                            ,Color.White);
+                            , Color.White);
 
                     if (this.cells[i, j].carries.Contains("character"))
                     {
@@ -99,52 +101,52 @@ namespace mazeGame
                         }
                         else
                         {
-                                sb.Draw(game.Content.Load<Texture2D>("Character/Run/" + CharacterController.currentImageName)
-                                        , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
-                                        , Color.White);
-  
+                            sb.Draw(game.Content.Load<Texture2D>("Character/Run/" + CharacterController.currentImageName)
+                                    , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
+                                    , Color.White);
+
                         }
                     }
                     if (this.cells[i, j].carries.Contains("end"))
                     {
                         sb.Draw(game.Content.Load<Texture2D>("Cells/exit")
-                            , new Rectangle(cellSize * i , cellSize * j , cellSize , cellSize)
+                            , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
                             , Color.White);
                     }
                     if (this.cells[i, j].carries.Contains("monster"))
                     {
-                        sb.Draw(game.Content.Load<Texture2D>("Monster/"+MonsterController.currentImageName)
-                            , new Rectangle(cellSize * i +3 , cellSize * j +3, cellSize -3 , cellSize -3)
+                        sb.Draw(game.Content.Load<Texture2D>("Monster/" + MonsterController.currentImageName)
+                            , new Rectangle(cellSize * i + 3, cellSize * j + 3, cellSize - 3, cellSize - 3)
                             , Color.White);
                     }
                     if (this.cells[i, j].carries.Contains("giftS"))
                     {
-                        sb.Draw(game.Content.Load<Texture2D>("Coin/"+GiftController.currentImageName)
-                            , new Rectangle(cellSize * i , cellSize * j , cellSize , cellSize )
+                        sb.Draw(game.Content.Load<Texture2D>("Coin/" + GiftController.currentImageName)
+                            , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
                             , Color.White);
                     }
                     if (this.cells[i, j].carries.Contains("giftA"))
                     {
                         sb.Draw(game.Content.Load<Texture2D>("GiftB/" + GiftController.currentImageName)
-                            , new Rectangle(cellSize * i+7 , cellSize * j+5, cellSize-10, cellSize-10 )
+                            , new Rectangle(cellSize * i + 7, cellSize * j + 5, cellSize - 10, cellSize - 10)
                             , Color.White);
                     }
                     if (this.cells[i, j].carries.Contains("bullet"))
                     {
-                        sb.Draw(game.Content.Load<Texture2D>("Bullet/"+BulletController.currentImageName)
-                            , new Rectangle(cellSize * i +5 , cellSize * j +5, cellSize -5, cellSize-5 )
+                        sb.Draw(game.Content.Load<Texture2D>("Bullet/" + BulletController.currentImageName)
+                            , new Rectangle(cellSize * i + 5, cellSize * j + 5, cellSize - 5, cellSize - 5)
                             , Color.Red);
                     }
                     if (this.cells[i, j].carries.Contains("bomb"))
                     {
-                        sb.Draw(game.Content.Load<Texture2D>("Obstacles/"+BombController.currentImageName)
-                            , new Rectangle(cellSize * i , cellSize * j , cellSize , cellSize )
+                        sb.Draw(game.Content.Load<Texture2D>("Obstacles/" + BombController.currentImageName)
+                            , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
                             , Color.White);
                     }
                 }
             }
         }
-       
-        
+
+
     }
 }

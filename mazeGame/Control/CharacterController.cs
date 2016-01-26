@@ -116,8 +116,6 @@ namespace mazeGame
                 currentCell.carries = currentCell.carries.Replace("character", "");
                 currentCell.neighbours.right.carries += "character";
                 currentCell = currentCell.neighbours.right;
-                
-
             }
         }
         private void moveLeft( )

@@ -47,7 +47,7 @@ namespace mazeGame
             }
 
 
-            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
+            canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove-0.05*GameController.level && GameController.gameHasStarted;
             //handle when Monster is Killed
             if (currentCell.carries.Contains("bullet"))
             {
