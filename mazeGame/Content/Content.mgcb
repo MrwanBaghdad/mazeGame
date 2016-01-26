@@ -1528,3 +1528,9 @@
 /processor:
 /build:GiftB/Thumbs.db
 
+#begin steps.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:steps.mp3
+

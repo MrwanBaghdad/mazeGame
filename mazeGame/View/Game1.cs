@@ -65,7 +65,7 @@ namespace mazeGame
             }
             //MazeBuilder.createMazeOneByOne(m);
             monster.moveMonster(character, gameTime,m);
-            character.moveCharacter(Keyboard.GetState(), gameTime,monster,m);
+            character.moveCharacter(Keyboard.GetState(), gameTime,monster,m,this);
             DroppingController.updateDroppings(m,gameTime);
             BulletController.getInstance().Update(character,gameTime);
             Debug.WriteLine(GameController.score);

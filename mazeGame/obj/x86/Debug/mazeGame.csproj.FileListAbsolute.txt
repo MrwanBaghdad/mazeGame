@@ -150,3 +150,5 @@ C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\Content\
 C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\Content\GiftB\7.xnb
 C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\Content\GiftB\8.xnb
 C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\Content\GiftB\9.xnb
+C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\Content\steps.wma
+C:\Users\Ghannam\Documents\mazeGame\mazeGame\mazeGame\bin\Windows\Debug\Content\steps.xnb

@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using mazeGame.Control;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,7 @@ namespace mazeGame
         double lastMoveWhen = 0;
         double timePerMove;
         public static bool isDead;
+        
         //fields that control animation
         public static int currentImageName = 1;
         private static bool canChangeImage;
@@ -32,7 +35,7 @@ namespace mazeGame
             isDead = false;
         }
 
-        public void moveCharacter(KeyboardState keyState, GameTime gameTime,MonsterController monster,Maze m)
+        public void moveCharacter(KeyboardState keyState, GameTime gameTime,MonsterController monster,Maze m,Game game)
         {
             //animation control
             canChangeImage = gameTime.TotalGameTime.TotalSeconds - lastChangeWhen > 0.05;
@@ -65,24 +68,30 @@ namespace mazeGame
                 }
             }
             canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
+            
             if (keyState.IsKeyDown(Keys.Up) && canMove)
             {
+
                 this.moveUp();
+                AudioController.playSteps(game);
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
             }
             else if (keyState.IsKeyDown(Keys.Down) && canMove)
             {
                 this.moveDown();
+                AudioController.playSteps(game);
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
             }
             else if (keyState.IsKeyDown(Keys.Right) && canMove)
             {
                 this.moveRight();
+                AudioController.playSteps(game);
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
             }
             else if (keyState.IsKeyDown(Keys.Left) && canMove)
             {
                 this.moveLeft();
+                AudioController.playSteps(game);
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
             }
 

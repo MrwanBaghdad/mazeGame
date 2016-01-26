@@ -46,6 +46,7 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Control\AudioController.cs" />
     <Compile Include="Control\BombController.cs" />
     <Compile Include="Control\DroppingController.cs" />
     <Compile Include="Model\Bullet.cs" />
