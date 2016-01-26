@@ -24,11 +24,19 @@ namespace mazeGame
             
             foreach (Cell item in m.cells)
             {
-                if (item.carries.Contains("gift") && item.carries.Contains("character"))
+                if (item.carries.Contains("giftS") && item.carries.Contains("character"))
                 {
-                    item.carries = item.carries.Replace("gift","");
+                    item.carries = item.carries.Replace("giftS","");
                     GameController.updateScore(10);
                 }
+                if (item.carries.Contains("giftA") && item.carries.Contains("character"))
+                {
+
+                    Bullet.refillAmmo();
+                    item.carries = item.carries.Replace("giftA", "");
+                    GameController.updateScore(5);
+                }
+
             }
         }
     }

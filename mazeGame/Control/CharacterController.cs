@@ -32,7 +32,7 @@ namespace mazeGame
             isDead = false;
         }
 
-        public void moveCharacter(KeyboardState keyState, GameTime gameTime,MonsterController monster)
+        public void moveCharacter(KeyboardState keyState, GameTime gameTime,MonsterController monster,Maze m)
         {
             //animation control
             canChangeImage = gameTime.TotalGameTime.TotalSeconds - lastChangeWhen > 0.05;
@@ -80,6 +80,12 @@ namespace mazeGame
             {
                 this.moveLeft();
                 lastMoveWhen = gameTime.TotalGameTime.TotalSeconds;
+            }
+
+            //handle end 
+            if (currentCell.carries.Contains("end") && GameController.gameHasStarted == true)
+            {
+                GameController.finishGame(gameTime,m);
             }
             
         }

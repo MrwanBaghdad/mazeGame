@@ -10,12 +10,12 @@ namespace mazeGame
     {
         public Cell[,] cells;
         public int mazeSize;
-        public int cellSize=22;
+        public int cellSize=40;
         public Cell endCell;
         
         public Maze()
         {
-            mazeSize = 19;
+            mazeSize = 15;
             cells = new Cell[mazeSize, mazeSize];
             endCell = cells[mazeSize - 1, mazeSize - 1];
             initializeAllCells();
@@ -85,9 +85,9 @@ namespace mazeGame
             {
                 for (int j = 0; j < mazeSize; j++)
                 {
-                    sb.Draw(game.Content.Load<Texture2D>("walls/"+this.cells[i, j].getImageName())
+                    sb.Draw(game.Content.Load<Texture2D>("new cell/"+this.cells[i, j].getImageName())
                             , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
-                            ,Color.Yellow);
+                            ,Color.White);
 
                     if (this.cells[i, j].carries.Contains("character"))
                     {
@@ -99,11 +99,10 @@ namespace mazeGame
                         }
                         else
                         {
-                            
                                 sb.Draw(game.Content.Load<Texture2D>("Character/Run/" + CharacterController.currentImageName)
                                         , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
                                         , Color.White);
-                            
+  
                         }
                     }
                     if (this.cells[i, j].carries.Contains("end"))
@@ -118,10 +117,16 @@ namespace mazeGame
                             , new Rectangle(cellSize * i +3 , cellSize * j +3, cellSize -3 , cellSize -3)
                             , Color.White);
                     }
-                    if (this.cells[i, j].carries.Contains("gift"))
+                    if (this.cells[i, j].carries.Contains("giftS"))
                     {
                         sb.Draw(game.Content.Load<Texture2D>("Coin/"+GiftController.currentImageName)
                             , new Rectangle(cellSize * i , cellSize * j , cellSize , cellSize )
+                            , Color.White);
+                    }
+                    if (this.cells[i, j].carries.Contains("giftA"))
+                    {
+                        sb.Draw(game.Content.Load<Texture2D>("GiftB/" + GiftController.currentImageName)
+                            , new Rectangle(cellSize * i+7 , cellSize * j+5, cellSize-10, cellSize-10 )
                             , Color.White);
                     }
                     if (this.cells[i, j].carries.Contains("bullet"))

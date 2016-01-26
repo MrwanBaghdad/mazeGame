@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace mazeGame.View
 {
-    class Gift : Dropping
+    class GiftScore : Dropping
     {
-        public Gift(Cell currentCell)
+        public GiftScore(Cell currentCell)
         {
             this.currentCell = currentCell;
-            currentCell.carries += "gift";
+            currentCell.carries += "giftS";
         }
     }
 }

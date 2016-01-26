@@ -55,13 +55,14 @@
     <Compile Include="Model\Bomb.cs" />
     <Compile Include="Model\Dropping.cs" />
     <Compile Include="Control\DroppingsFactory.cs" />
+    <Compile Include="Model\GiftAmmo.cs" />
     <Compile Include="View\Game1.cs" />
     <Compile Include="Control\GiftController.cs" />
     <Compile Include="Model\Maze.cs" />
     <Compile Include="Model\MazeBuilder.cs" />
     <Compile Include="Control\GameController.cs" />
     <Compile Include="Control\MonsterController.cs" />
-    <Compile Include="Model\Gift.cs" />
+    <Compile Include="Model\GiftScore.cs" />
     <Compile Include="View\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

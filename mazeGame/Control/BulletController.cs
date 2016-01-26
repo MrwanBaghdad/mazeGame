@@ -27,7 +27,6 @@ namespace mazeGame
         private static double lastChangeWhen = 0;
         private BulletController()
         {
-
         }
         public  void Update(CharacterController character,GameTime gameTime)
         {
@@ -75,6 +74,7 @@ namespace mazeGame
             }
             return instance;
         }
+        
       
     }
 }

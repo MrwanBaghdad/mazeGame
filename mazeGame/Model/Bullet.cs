@@ -30,11 +30,13 @@ namespace mazeGame
             }
             else
             {
-                instances[currentIndex].currentCell = givenCell;
-                instances[currentIndex].direction = firedFrom;
-                return instances[currentIndex];
+                 return instances[currentIndex];
             }
 
+        }
+        public static void refillAmmo()
+        {
+            instances = new Bullet[20];
         }
         public static void moveAll()
         {
@@ -129,6 +131,18 @@ namespace mazeGame
                 currentCell.carries = currentCell.carries.Replace("bullet", "");
 
             }
+        }
+        public static int getBulletsLeft()
+        {
+            int bulletsLeft = 0;
+            for (int i = 0; i < instances.Length; i++)
+            {
+                if (instances[i] == null)
+                {
+                    bulletsLeft++;
+                }
+            }
+            return bulletsLeft;
         }
     }
 }

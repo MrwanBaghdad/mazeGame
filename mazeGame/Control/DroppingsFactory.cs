@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mazeGame.Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,25 +12,32 @@ namespace mazeGame.View
     class DroppingsFactory
     {
         static ArrayList cellswithDroppings=new ArrayList();
-        static bool giftTurn = false;
+        static int whoseTurn = 0;
         public static Dropping putDropping(Maze m)
         {
-            giftTurn = !giftTurn;
-            Dropping dropping;
-            Debug.WriteLine(cellswithDroppings.Count);
-            if (giftTurn)
+            if (cellswithDroppings.Count == 0)
             {
-
-                dropping = new Gift(getCellFarFromCellDroppings(m));
+                cellswithDroppings.Add(m.cells[0, 0]);
+                cellswithDroppings.Add(m.cells[m.mazeSize - 1, 0]);
+            }
+            Random generator = new Random();
+            whoseTurn = generator.Next(0,3);
+            Dropping dropping;
+            switch (whoseTurn){
+            case 0:
+                dropping = new GiftScore(getCellFarFromCellDroppings(m));
                 cellswithDroppings.Add(dropping.currentCell);
                 return dropping;
-            }
-            else
-            {
-                
+            case 1:
                 dropping = new Bomb(getCellFarFromCellDroppings(m));
                 cellswithDroppings.Add(dropping.currentCell);
                 return dropping;
+            case 2:
+                dropping = new GiftAmmo(getCellFarFromCellDroppings(m));
+                cellswithDroppings.Add(dropping.currentCell);
+                return dropping;
+            default:
+                return null;
             }
             
             
@@ -53,7 +61,7 @@ namespace mazeGame.View
         }
         private static bool isFarFromCellDroppings(Cell givenCell, Maze m)
         {
-            int howFar = 5;
+            int howFar = (int)(m.mazeSize*0.25);
             for (int i = 0; i < cellswithDroppings.Count; i++)
             {
                 if (givenCell.distanceFrom((Cell)cellswithDroppings[i]) < howFar)

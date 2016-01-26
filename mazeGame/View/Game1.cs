@@ -15,7 +15,7 @@ namespace mazeGame
         SpriteBatch spriteBatch;
         
         Maze m;
-        bool playControl = false;
+        public static bool playControl = false;
   
         CharacterController character;
         MonsterController monster;
@@ -24,8 +24,8 @@ namespace mazeGame
         {
             m = new Maze();
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = m.mazeSize * m.cellSize;
-            graphics.PreferredBackBufferHeight = m.mazeSize * m.cellSize;   
+            graphics.PreferredBackBufferWidth = m.mazeSize * m.cellSize +200;
+            graphics.PreferredBackBufferHeight = m.mazeSize * m.cellSize ;   
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
@@ -66,20 +66,21 @@ namespace mazeGame
             }
             //MazeBuilder.createMazeOneByOne(m);
             monster.moveMonster(character, gameTime,m);
-            character.moveCharacter(Keyboard.GetState(), gameTime,monster);
+            character.moveCharacter(Keyboard.GetState(), gameTime,monster,m);
             DroppingController.updateDroppings(m,gameTime);
             BulletController.getInstance().Update(character,gameTime);
-            
+            Debug.WriteLine(GameController.score);
             base.Update(gameTime);
 
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(157,158,0));
             spriteBatch.Begin();
             m.drawMaze(spriteBatch, this);
-
+            GameController.drawStatus(spriteBatch,this,m,gameTime);
+            //spriteBatch.DrawString(Content.Load<SpriteFont>("font"), "Score: " + GameController.score, new Vector2(20,m.mazeSize * m.cellSize+ 20), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
