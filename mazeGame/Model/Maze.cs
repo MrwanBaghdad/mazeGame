@@ -95,15 +95,19 @@ namespace mazeGame
                     {
                         if (CharacterController.isDead)
                         {
+                           
                             sb.Draw(game.Content.Load<Texture2D>("Character/Killed/" + CharacterController.currentImageName)
                                     , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
                                     , Color.White);
                         }
                         else
                         {
-                            sb.Draw(game.Content.Load<Texture2D>("Character/Run/" + CharacterController.currentImageName)
-                                    , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
-                                    , Color.White);
+                            if (CharacterController.currentImageName < 8)
+                            {
+                                sb.Draw(game.Content.Load<Texture2D>("Character/Run/" + CharacterController.currentImageName)
+                                        , new Rectangle(cellSize * i, cellSize * j, cellSize, cellSize)
+                                        , Color.White);
+                            }
 
                         }
                     }

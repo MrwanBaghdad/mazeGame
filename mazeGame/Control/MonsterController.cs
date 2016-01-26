@@ -89,6 +89,8 @@ namespace mazeGame
             {
                 CharacterController.isDead = true;
                 CharacterController.currentImageName = 1;
+                GameController.gameHasStarted=false;
+                GameController.level = 1;
                 moveMonsterToCell(m.cells[m.mazeSize-1, 0]);
             }
             lastCharCell = character.currentCell;

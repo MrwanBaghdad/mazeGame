@@ -26,10 +26,9 @@ namespace mazeGame
         {
             gameHasStarted = false;
             level++;
-            
             updateScore(100);
             updateScore((int) (10000 / (gameTime.TotalGameTime.TotalSeconds - lastFinishedGameTime)));
-            lastFinishedGameTime = gameTime.TotalGameTime.TotalMinutes;
+            lastFinishedGameTime = gameTime.TotalGameTime.TotalSeconds;
         }
         public static void startGame()
         {
@@ -70,6 +69,7 @@ namespace mazeGame
             int lastPositionX=0;
             ///draw minutes 
             string minutes = ((int)(gameTime.TotalGameTime.TotalSeconds - GameController.lastFinishedGameTime) / 60) + "";
+            minutes = minutes.Length == 1 ? "0" + minutes : minutes;
             for (int i = 1; i <= minutes.Length; i++)
             {
                 sb.Draw(game.Content.Load<Texture2D>("numbers/" + minutes[i - 1]), new Rectangle(m.mazeSize * m.cellSize + 50 + (i * 15), 360, 20, 20), Color.White);
@@ -79,6 +79,7 @@ namespace mazeGame
             sb.Draw(game.Content.Load<Texture2D>("numbers/" +"00"), new Rectangle(lastPositionX+15, 360, 20, 20), Color.White);
             //draw Seconds
             string seconds = ((int)(gameTime.TotalGameTime.TotalSeconds - GameController.lastFinishedGameTime) % 60) + "";
+            seconds = seconds.Length == 1 ? "0" + seconds : seconds;
             for (int i = 1; i <= seconds.Length; i++)
             {
                 sb.Draw(game.Content.Load<Texture2D>("numbers/" + seconds[i - 1]), new Rectangle(lastPositionX + 15 + (i * 15), 360, 20, 20), Color.White);

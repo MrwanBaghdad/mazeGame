@@ -30,6 +30,7 @@ namespace mazeGame
                     CharacterController.isDead = true;
                     GameController.finishGame(gameTime, m);
                     GameController.level = 1;
+                    CharacterController.currentImageName = 1;
                 }
                 if (item.carries.Contains("bomb") && item.carries.Contains("bullet"))
                 {

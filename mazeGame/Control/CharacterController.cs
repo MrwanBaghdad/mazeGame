@@ -58,6 +58,10 @@ namespace mazeGame
 
                         lastChangeWhen = gameTime.TotalGameTime.TotalSeconds;
                     }
+                    else
+                    {
+                        isDead = false;
+                    }
                 }
             }
             canMove = gameTime.TotalGameTime.TotalSeconds - lastMoveWhen > timePerMove && GameController.gameHasStarted;
